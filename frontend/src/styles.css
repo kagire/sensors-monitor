@@ -1,0 +1,47 @@
+/*table*/
+.table-main{
+  width: 100%;
+}
+.table-link{
+  text-decoration: underline;
+  color: red;
+}
+.route-link{
+  text-decoration: underline;
+  color: dodgerblue;
+}
+.inline{
+  display: inline;
+}
+
+/*center*/
+.centered-content{
+  text-align: center;
+}
+
+.form-custom{
+  margin: auto;
+  width: 30%;
+  min-width: 400px;
+}
+
+/*head*/
+.logo{
+  margin-left: 8%;
+}
+.header{
+  display: inline-block;
+}
+.authButton{
+  float: right;
+  margin-right: 8%;
+}
+
+.spaced{
+  margin-left: 4%;
+}
+.width-lined{
+  width: 40%;
+}
+
+

@@ -1,0 +1,31 @@
+#box {
+  width:90%;
+  height:auto;
+  border:5px solid green;
+  box-sizing: border-box;
+}
+.left {
+  float:left;
+  width:30%;
+}
+.right {
+  float:right;
+  width:30%;
+}
+.middle {
+  float:left;
+  width:30%;
+}
+
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+.cf {
+  *zoom: 1;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:float="http://www.w3.org/1999/xhtml">
+  <mat-form-field class="spaced grid text-center" appearance="standard">
+    <div class="row py-2">
+      <label class="col" for="search">Search: </label>
+      <input class="col" id="search" matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+    </div>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="table-main">
+
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td [title]="row.description != null ? row.description : 'No description provided'" mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Model">
+        <th mat-header-cell *matHeaderCellDef> Model </th>
+        <td mat-cell *matCellDef="let row"> {{row.model}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let row"> {{row.type}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Range">
+        <th mat-header-cell *matHeaderCellDef> Range </th>
+        <td mat-cell *matCellDef="let row"> {{row.rangeFrom + '-' + row.rangeTo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Unit">
+        <th mat-header-cell *matHeaderCellDef> Unit </th>
+        <td mat-cell *matCellDef="let row"> {{row.unit}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Location">
+        <th mat-header-cell *matHeaderCellDef> Location </th>
+        <td mat-cell *matCellDef="let row"> {{row.location}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Edit">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let row">
+          <a class="table-link" [hidden]="!isAdmin()" routerLinkActive="active" [queryParams]="{sensor: row.id}" routerLink="/home/create">Edit</a>
+          &nbsp;
+          <a class="table-link" [hidden]="!isAdmin()" routerLinkActive="active" (click)="this.deleteSensor(row.id)">Delete</a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="6">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+    <div class="row py-2">
+      <a style="max-width: 200px" class="col btn btn-outline-primary" [hidden]="!isAdmin()" routerLinkActive="active" [queryParams]="{sensor: 'new'}" routerLink="/home/create">Create sensor</a>
+      <mat-paginator class="col" [pageSize]=4 aria-label="Select page of users"></mat-paginator>
+    </div>
+  </div>
+</html>

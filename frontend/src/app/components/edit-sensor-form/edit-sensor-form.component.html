@@ -1,0 +1,62 @@
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form-custom">
+  <div class="form-group row g-2 py-2">
+    <label class="col-md-2 col-form-label">Name: </label>
+    <div class="col-sm-7 ">
+      <input class="form-control" type="text" name="name" formControlName="name"/>
+    </div>
+    <div *ngIf="editForm.controls['name'].invalid && editForm.controls['name'].touched">Name should not be empty and less than 40 characters</div>
+  </div>
+  <div class="form-group row g-2 py-2 py-2">
+    <label class="col-md-2 col-form-label">Model: </label>
+    <div class="col-sm-7 ">
+      <input class="form-control" type="text" name="model" formControlName="model"/>
+    </div>
+    <div *ngIf="editForm.controls['model'].invalid && editForm.controls['model'].touched">Model should not be empty and less than 15 characters</div>
+  </div>
+  <div class="form-group row g-2 py-2">
+      <label class="col-md-2 col-form-label">Range from: </label>
+      <div class="col-sm-2 ">
+        <input class="form-control" type="number" name="rangeFrom" formControlName="rangeFrom" (input)="validateRangeFrom()" min="0"/>
+      </div>
+      <label class="col-md-1 col-form-label">To: </label>
+      <div class="col-sm-2 float-end">
+        <input class="form-control" type="number" name="rangeTo" formControlName="rangeTo" (input)="validateRangeTo()" min="0"/>
+      </div>
+      <div *ngIf="editForm.controls['rangeFrom'].invalid && editForm.controls['rangeTo'].invalid &&
+       editForm.controls['rangeFrom'].touched && editForm.controls['rangeTo'].touched">This is a required field</div>
+  </div>
+  <div class="form-group row g-2 py-2">
+    <label class="col-md-2 col-form-label">Type: </label>
+    <div class="col-sm-7 ">
+      <select class="form-control" name="type" formControlName="type">
+        <option *ngFor="let sensorType of this.sensorTypes">{{sensorType}}</option>
+      </select>
+    </div>
+    <div *ngIf="editForm.controls['type'].invalid && editForm.controls['type'].touched">This is a required field</div>
+  </div>
+  <div class="form-group row g-2 py-2">
+    <label class="col-md-2 col-form-label">Unit: </label>
+    <div class="col-sm-7 ">
+      <select class="form-control" name="unit" formControlName="unit">
+        <option *ngFor="let sensorUnit of this.sensorUnits">{{sensorUnit}}</option>
+      </select>
+    </div>
+    <div *ngIf="editForm.controls['unit'].invalid && editForm.controls['unit'].touched">This is a required field</div>
+  </div>
+  <div class="form-group row g-2 py-2">
+    <label class="col-md-2 col-form-label">Location: </label>
+    <div class="col-sm-7 ">
+      <input class="form-control" type="text" name="location" formControlName="location"/>
+    </div>
+    <div *ngIf="editForm.controls['location'].invalid && editForm.controls['location'].touched">Location should be less than 40 characters</div>
+  </div>
+  <div class="form-group row g-2 py-2">
+    <label class="col-md-2 col-form-label">Description: </label>
+    <div class="col-sm-7 ">
+      <textarea class="form-control" name="description" formControlName="description" maxlength="200"></textarea>
+    </div>
+    <div *ngIf="editForm.controls['description'].invalid && editForm.controls['description'].touched">Description should be less than 200 characters</div>
+  </div>
+  <input class="btn btn-outline-danger" type="button" value="Cancel" (click)="onReturnHome()">
+  <input class="btn btn-primary m-md-2" type="submit" value="Save">
+</form>

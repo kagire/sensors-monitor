@@ -1,0 +1,23 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-custom">
+  <div class="form-group row g-2">
+    <label class="col-md-2 col-form-label" for="username">Username:</label>
+    <div class="col-sm-7 float-right">
+      <input class="form-control" type="text" id="username" name="username" formControlName="username"/>
+    </div>
+  </div>
+  <div>
+    <span class="form-text" *ngIf="loginForm.controls['username'].invalid && loginForm.controls['username'].touched">Please enter correct username</span>
+  </div>
+  <div class="form-group row g-2 py-2">
+    <label class="col-md-2 col-form-label" for="password">Password:</label>
+    <div class="col-sm-7 float-right">
+      <input class="form-control" type="password" id="password" name="password" formControlName="password"/>
+    </div>
+  </div>
+  <div class="form-group row g-2 py-2">
+    <label class="col-md-2 col-form-label" for="password"></label>
+    <div class="col-sm-7 float-right">
+      <button id="button" class="btn btn-primary form-control" type="submit">Login</button>
+    </div>
+  </div>
+</form>
