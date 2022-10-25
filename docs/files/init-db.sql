@@ -1,4 +1,6 @@
-CREATE DATABASE "sensors-monitor1";
+CREATE DATABASE "sensors-monitor";
+
+/*  inside this database:  */
 
 CREATE TABLE IF NOT EXISTS public.sensor_types
 (
@@ -50,11 +52,11 @@ INSERT INTO public.sensor_units(unit)
 VALUES ('bar'), ('voltage'), ('°С'), ('%');
 
 INSERT INTO public.sensors(name, model, range_from, range_to, type, unit, location, description)
-VALUES ('Sensor 1', 'PC33-561', 0, 14, 'Pressure', 'bar', 'NULL', 'ggggg'),
+VALUES ('Sensor 1', 'PC33-561', 0, 14, 'Pressure', 'bar', NULL, 'ggggg'),
        ('Sensor 2', 'PC33-56888', 26, 106, 'Pressure', 'bar', 'Room1', 'cats gogo'),
-       ('Sensor 3', 'PC33-5682', 29, 50, 'Humidity', 'bar', 'NULL', 'ggggg'),
-       ('Sensor 11', 'PC23-56828', 0, 13, 'Temperature', '%', 'NULL', 'i like frogs54'),
-       ('Sensor 90', 'PC31-56888', 0, 1, 'Pressure', 'bar', 'Room2', 'ggggg');
+       ('Sensor 3', 'PC33-5682', 29, 50, 'Humidity', 'bar', NULL, NULL),
+       ('Sensor 11', 'PC23-56828', 0, 13, 'Temperature', '%', NULL, 'i like frogs54'),
+       ('Sensor 90', 'PC31-56888', 0, 1, 'Pressure', 'bar', 'Room2', 'bbbb');
 
 INSERT INTO public.users(username, password, role)
 VALUES ('admin', '$2a$12$M1CNcFXC7tPDkLpULLiijeOCyayBxaJta4/Gubp7zlk5TlaPZSkIi', 'ADMINISTRATOR'),

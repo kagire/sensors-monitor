@@ -27,7 +27,7 @@ Scripts:
 
 #### Set angular app running  
 
-1) Download this [script directory](docs/files/angular-app)
+1) Clone this [script directory](docs/files/angular-app) or download [rar archive](docs/files/angular-app.rar) and decompress it
 2) Move to directory where you downloaded it (to the parent one of _angular-app_)
 3) Execute in terminal:  
 3.1)`npm install http-server -g`  
