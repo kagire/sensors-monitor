@@ -1,15 +1,9 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {Sensor} from "./sensor";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from "@angular/router";
-import {lastValueFrom, map} from "rxjs";
-import {SensorDto} from "./sensorDto";
-import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Injectable()
 export class AppService {
-
-  postList : Sensor[] = [];
 
   constructor(private http: HttpClient, private router: Router) {}
 

@@ -21,8 +21,4 @@ export class Sensor {
     this.location = location;
     this.description = description;
   }
-
-  public static generateEmptySensor() : Sensor{
-    return new Sensor(0, '', '', null, null, '', '', null,  null);
-  }
 }

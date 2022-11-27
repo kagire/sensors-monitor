@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {lastValueFrom, map, Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {Sensor} from "./sensor";
-import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SensorDto} from "./sensorDto";
 
@@ -27,7 +27,6 @@ export class SensorService {
   }
 
   private performGetSensorsRequest(sensorParameter : string){
-    const resp = SensorDto.generateEmptySensorDto();
     return this.http.get<SensorDto>('http://localhost:8080/sensors/modify',
       {params: new HttpParams().set('sensor', sensorParameter)}
     );
@@ -47,10 +46,7 @@ export class SensorService {
   deleteSensor(id : number){
     return this.http.delete('http://localhost:8080/sensors/modify',
       {responseType: 'text', params: new HttpParams().set('sensorId', id), observe: 'response'})
-      .pipe();
-/*      .pipe(map(data => {
-        console.log(data.status);
-      }));*/
+      .subscribe();
   }
 
   cancelChangesAndReturn(){

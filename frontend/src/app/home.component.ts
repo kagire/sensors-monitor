@@ -1,12 +1,14 @@
 import {Component, ViewChild} from '@angular/core';
-import { AppService } from './services/app.service';
+import {AppService} from './services/app.service';
 import {Sensor} from "./services/sensor";
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 import {SensorService} from "./services/sensor-service.service";
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
+import {SensorState} from "./store/state/home-table.state";
+import {select, Store} from "@ngrx/store";
+import {selectSensors} from "./store/selector/home-table.selector";
+import {deleteSensors, getSensors} from "./store/action/home-table.actions";
 
 @Component({
   templateUrl: './home.component.html',
@@ -18,26 +20,26 @@ export class HomeComponent {
   dataSource!: MatTableDataSource<Sensor>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  public sensors : Sensor[] = [];
 
-  constructor(public sensorService: SensorService, public app: AppService) {
-    this.getSensors(true);
+  constructor(public sensorService: SensorService, public app: AppService, private store: Store<SensorState>) {
+    this.getSensors();
   }
 
-  private getSensors(rebuild : boolean){
-      this.sensorService.loadSensors().subscribe((response : Sensor[]) => {
-        this.sensors = response;
-        if (rebuild) this.dataSource = new MatTableDataSource(this.sensors);
+  private getSensors(){
+    this.dataSource = new MatTableDataSource();
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.dataSource.data = [];
+    this.store.dispatch(getSensors());
+    this.store.pipe(select(selectSensors)).subscribe((sensors: Sensor[]) => {
+        this.dataSource = new MatTableDataSource<Sensor>(sensors);
         this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-        this.dataSource.data = this.sensors;
-    })
+      })
   }
 
   deleteSensor(id : number){
-    this.sensorService.deleteSensor(id).subscribe(() => {
-      this.getSensors(false);
-    });
+    this.store.dispatch(deleteSensors(id));
+    this.store.dispatch(getSensors());
   }
 
   applyFilter(event: Event) {

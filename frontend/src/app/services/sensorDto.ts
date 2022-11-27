@@ -11,8 +11,4 @@ export class SensorDto{
     this.sensorTypes = sensorTypes;
     this.sensorUnits = sensorUnits;
   }
-
-  public static generateEmptySensorDto() : SensorDto{
-    return new SensorDto(Sensor.generateEmptySensor(), [], []);
-  }
 }

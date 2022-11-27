@@ -1,11 +1,15 @@
 ## Sensors monitor  
 ### Description to this app  
 
+This branch represents NgRx version of app. Also, datasource settings are accessible now.
+
 - **Frontend**: Angular v14.2.6, Bootstrap v5  
 - **Rest API**: Spring Boot v2.7; modules: Spring Security, Spring Data + Hibernate  
 - **Database**: PostgreSQL v14.2  
 
-This repository presents source code, but quick launch instructions shown below.
+Predefined users:
+- `admin`/`admin` (can edit table)
+- `user`/`user`
 
 ### Run instructions  
 
@@ -18,20 +22,14 @@ Scripts:
 
 #### Set java app running  
 
-1) Download this [java executable](docs/files/sensors-monitor.jar)  
-2) Move to directory where you downloaded it
-3) Execute in terminal `java -jar sensors-monitor.jar`
-
-> To set up connection to database your user and password should be `postgres` and `1234`  
-> Server port: `5432`
+1) Edit `application.properties` file. Set your database url/password/username.  
+2) Run `SensorsMonitorApplication` main class.  
 
 #### Set angular app running  
 
-1) Clone this [script directory](docs/files/angular-app) or download [rar archive](docs/files/angular-app.rar) and decompress it
-2) Move to directory where you downloaded it (to the parent one of _angular-app_)
-3) Execute in terminal:  
-3.1)`npm install http-server -g`  
-3.2)`http-server angular-app -p 4200`  
+1) Open terminal at frontend directory.  
+2) Run `npm install` to install dependencies.  
+3) Run `ng serve` to start application.  
 
 Then access app at [localhost:4200](http://localhost:4200)
 
