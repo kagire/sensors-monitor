@@ -1,6 +1,8 @@
 ## Sensors monitor  
 ### Description to this app  
 
+**_Note_**: new ngrx implementation provided! View [other branch](https://github.com/kagire/sensors-monitor/tree/alternate-implementation).
+
 - **Frontend**: Angular v14.2.6, Bootstrap v5  
 - **Rest API**: Spring Boot v2.7; modules: Spring Security, Spring Data + Hibernate  
 - **Database**: PostgreSQL v14.2  
@@ -23,7 +25,9 @@ Scripts:
 3) Execute in terminal `java -jar sensors-monitor.jar`
 
 > To set up connection to database your user and password should be `postgres` and `1234`  
-> Server port: `5432`
+> Server port: `5432`  
+
+If you want to provide your own properties, check [other branch](https://github.com/kagire/sensors-monitor/tree/alternate-implementation).
 
 #### Set angular app running  
 
