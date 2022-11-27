@@ -7,7 +7,6 @@ import {AppService} from './services/app.service';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home.component';
 import {LoginComponent} from './login.component';
-import {LocalStorageService} from './services/local-storage.service';
 import {CreateSensorComponent} from "./create-sensor.component";
 import {AuthInterceptorInterceptor} from "./interceptors/auth-interceptor.interceptor";
 //table
@@ -78,7 +77,6 @@ const routes: Routes = [
   providers: [
     AuthGuard,
     AppService,
-    LocalStorageService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

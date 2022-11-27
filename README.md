@@ -8,8 +8,8 @@ This branch represents NgRx version of app. Also, datasource settings are access
 - **Database**: PostgreSQL v14.2  
 
 Predefined users:
-- `admin`/`admin` (can edit table)
-- `user`/`user`
+- _admin:admin_ (can edit table)
+- _user:user_
 
 ### Run instructions  
 
